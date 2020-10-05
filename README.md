@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column            | Type       | Options                                       |
-| ----------------- | ---------- | --------------------------------------------- |
-| title             | string     | null: false                                   |
-| description       | text       | null: false                                   |
-| category          | integer    | null: false                                   |
-| condition         | integer    | null: false                                   |
-| delivery_charge   | integer    | null: false                                   |
-| send_from         | integer    | null: false                                   |
-| days_for_delivery | integer    | null: false                                   |
-| price             | integer    | null: false, price >= 300, price <= 9,999,999 |
-| user              | references | foreign_key: true                             |
+| Column               | Type       | Options                                       |
+| -------------------- | ---------- | --------------------------------------------- |
+| title                | string     | null: false                                   |
+| description          | text       | null: false                                   |
+| category_id          | integer    | null: false                                   |
+| condition_id         | integer    | null: false                                   |
+| delivery_charge_id   | integer    | null: false                                   |
+| send_from_id         | integer    | null: false                                   |
+| days_for_delivery_id | integer    | null: false                                   |
+| price                | integer    | null: false, price >= 300, price <= 9,999,999 |
+| user                 | references | foreign_key: true                             |
 
 ### Association
 
@@ -46,16 +46,16 @@
 
 ### Association
 
-- belongs_to user
-- belongs_to item
-- has_one buyer
+- belongs_to :user
+- belongs_to :item
+- has_one :buyer
 
 ## buyers テーブル
 
 | Column        | Type       | Options           |
 | ------------- | ---------- | ----------------- |
 | post_code     | string     | null: false       |
-| prefecture    | integer    | null: false       |
+| prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
 | street        | text       | null: false       |
 | building      | text       |                   |
@@ -64,4 +64,4 @@
 
 ### Association
 
-- belongs_to purchase
+- belongs_to :purchase
