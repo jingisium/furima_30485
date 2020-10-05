@@ -24,13 +24,13 @@
 | ----------------- | ---------- | --------------------------------------------- |
 | title             | string     | null: false                                   |
 | description       | text       | null: false                                   |
-| category          | string     | null: false                                   |
-| condition         | string     | null: false                                   |
-| delivery_charge   | string     | null: false                                   |
-| send_from         | string     | null: false                                   |
-| days_for_delivery | string     | null: false                                   |
+| category          | integer    | null: false                                   |
+| condition         | integer    | null: false                                   |
+| delivery_charge   | integer    | null: false                                   |
+| send_from         | integer    | null: false                                   |
+| days_for_delivery | integer    | null: false                                   |
 | price             | integer    | null: false, price >= 300, price <= 9,999,999 |
-| user_id           | references | foreign_key: true                             |
+| user              | references | foreign_key: true                             |
 
 ### Association
 
@@ -41,8 +41,8 @@
 
 | Column  | Type       | Options           |
 | ------- | ---------- | ----------------- |
-| user_id | references | foreign_key: true |
-| item_id | references | foreign_key: true |
+| user    | references | foreign_key: true |
+| item    | references | foreign_key: true |
 
 ### Association
 
@@ -54,16 +54,13 @@
 
 | Column        | Type       | Options           |
 | ------------- | ---------- | ----------------- |
-| card_number   | integer    | null: false       |
-| valid_until   | integer    | null: false       |
-| security_code | integer    | null: false       |
-| post_code     | integer    | null: false       |
-| prefecture    | string     | null: false       |
+| post_code     | string     | null: false       |
+| prefecture    | integer    | null: false       |
 | city          | string     | null: false       |
 | street        | text       | null: false       |
 | building      | text       |                   |
-| phone         | integer    | null: false       |
-| purchase_id   | references | foreign_key: true |
+| phone         | string     | null: false       |
+| purchase      | references | foreign_key: true |
 
 ### Association
 
