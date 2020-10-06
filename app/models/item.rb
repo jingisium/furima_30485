@@ -1,7 +1,9 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :category, :condition, :days_for_delivery,
-                         :delivery_charge, :send_from
+  belongs_to_active_hash :category, :condition, :days_for_delivery, :delivery_charge, :send_from
+
+  belongs_to :user
+  has_one_attached :image
 
   with_options presence: true do
     validates :title
