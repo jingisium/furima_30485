@@ -30,6 +30,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+  end
+
   private
 
   def item_params
