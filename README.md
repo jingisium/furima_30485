@@ -30,6 +30,7 @@
 | send_from_id         | integer    | null: false                                   |
 | days_for_delivery_id | integer    | null: false                                   |
 | price                | integer    | null: false, price >= 300, price <= 9,999,999 |
+| sold                 | boolean    | null: false, default = "false"                |
 | user                 | references | foreign_key: true                             |
 
 ### Association

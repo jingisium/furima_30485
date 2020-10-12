@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_074053) do
     t.integer "send_from_id", null: false
     t.integer "days_for_delivery_id", null: false
     t.integer "price", null: false
+    t.boolean "sold", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
