@@ -1,12 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :set_item, only:[:index, :create]
+  before_action :move_to_index, only:[:index]
   before_action :authenticate_user!
 
   def index
     @purchase_buyer = PurchaseBuyer.new
-    if (user_signed_in? && current_user.id == @item.user_id) || @item.sold == true
-      redirect_to root_path
-    end
   end
 
   def create
@@ -22,6 +20,12 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def move_to_index
+    if (user_signed_in? && current_user.id == @item.user_id) || @item.sold == true
+      redirect_to root_path
+    end
+  end
 
   def set_item
     @item = Item.find(params[:item_id])

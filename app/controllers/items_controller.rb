@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -23,9 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if (user_signed_in? && current_user.id != @item.user.id) || @item.sold == true
-      redirect_to root_path
-    end
   end
 
   def update
@@ -45,6 +43,12 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def move_to_index
+    if (user_signed_in? && current_user.id != @item.user.id) || @item.sold == true
+      redirect_to root_path
+    end
+  end
 
   def item_params
     params.require(:item).permit(:title, :description, :category_id,
