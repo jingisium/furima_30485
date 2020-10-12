@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @purchase_buyer = PurchaseBuyer.new
-    if user_signed_in? && current_user.id == @item.user_id
+    if (user_signed_in? && current_user.id == @item.user_id) || @item.sold == true
       redirect_to root_path
     end
   end
@@ -15,6 +15,7 @@ class PurchasesController < ApplicationController
     if @purchase_buyer.valid?
       pay_item
       @purchase_buyer.save
+      @item.update(sold: true)
       redirect_to root_path
     else
       render :index
