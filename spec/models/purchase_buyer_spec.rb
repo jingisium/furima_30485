@@ -14,10 +14,14 @@ RSpec.describe "購入記録と配送先情報の登録", type: :model do
       @purchase_buyer.building = nil
       expect(@purchase_buyer).to be_valid
     end
-    
   end
 
   context "情報が保存できない時" do
+    it "tokenが空だと保存できない" do
+      @purchase_buyer.token = nil
+      @purchase_buyer.valid?
+      expect(@purchase_buyer.errors.full_messages).to include("Token can't be blank")
+    end
     it "郵便番号が空だと保存できない" do
       @purchase_buyer.post_code = nil
       @purchase_buyer.valid?
